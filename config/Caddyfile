@@ -1,0 +1,6 @@
+<host_name> {
+	reverse_proxy <target>
+	tls {
+		dns cloudflare <api_token>
+	}
+}
