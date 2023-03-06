@@ -3,6 +3,9 @@ Self-hosted website using Google Domains, Caddy Server, and Cloudflare in a
 Windows environment.
 
 # Steps
+## Run your web service
+Startup your webservice like Jellyfin or Photoprism. This is your `<target>`.
+
 ## Router configuration
 1. Assign / reserve a static IP for your host machine.
 2. Forward port 443 to this IP.
@@ -12,19 +15,19 @@ Choose any you'd like. As of 2023, some .com and .org domains can be purchased
 for as low as $12 per year.
 
 ## Cloudflare setup
-1. Create a new website. Name it whatever (or just the domain name).
-2. DNS -> records -> add new A record.
+1. Create a new website. Name it the domain name.
+2. DNS -> records -> add new `A` record.
    ```
    Name: <your domain name>              # example: myselfhost.dev
    IPv4 address: <your public IP>
    Proxy status: Proxied
    TTL: Auto
    ```
-3. (Optional) Add a new CNAME record.
+3. (Optional) Add a new `CNAME` record.
    ```
    Name: <subdomain>                     # example: media
    Target: @
-   Proxy status: Proxid
+   Proxy status: Proxied
    TTL: Auto
    ````
 4. SSL -> Overview -> Change TLS encryption mode to Full (strict).
@@ -36,7 +39,7 @@ for as low as $12 per year.
    - Zone.Zone.Read
    - Zone.DNS.Edit
    Zone Resources:
-   Include.Specific Zone.<your domain name>
+   - Include.Specific Zone.<your domain name>
    ```
    This is your `<api_token>`
 6. Go to Cloudflare Nameserver section and take note of these two names.
